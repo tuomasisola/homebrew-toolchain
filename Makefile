@@ -26,6 +26,8 @@ build:
 	unzip z88dk-osx-latest.zip -d ./tools && \
 	rm z88dk-osx-latest.zip
 
+	npm install asm80 --prefix tools/asm80 --loglevel=error
+
 .PHONY: send
 send:
 	./tools/send ${INPUT_DELAY} < ${SRC} > ${TTY_DEV}
@@ -35,7 +37,7 @@ clean:
 	rm asm/*.hex asm/*.lst
 	rm c/*.ihx c/*.bin
 	rm tools/send
-	rm -r tools/z88dk
+	rm -r tools/z88dk tools/node_modules tools/package-lock.json
 
 
 .PHONY: print
@@ -49,6 +51,7 @@ print:
 
 .PHONY: asm
 asm:
+	export PATH=${PATH}:./tools/asm80/node_modules/.bin && \
 	asm80 -m Z80 ${ASM_SOURCE} -o ${ASM_OUT} > /dev/null && \
 	make print TOPRINT=asm/${ASM_OUT}
 
