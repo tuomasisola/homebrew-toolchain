@@ -1,0 +1,19 @@
+.vscode
+.venv
+__pycache__
+.DS_Store
+
+# Ignore Tools except send source
+tools/
+!tools/send.c
+
+# Igonore Source files except examples
+c/*.c
+asm/*.asm
+!example.*
+
+# Ignore all hex, list and binaries
+*.ihx
+*.hex
+*.lst
+*.bin

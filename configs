@@ -1,0 +1,8 @@
+TTY_DEV=/dev/tty.usbserial-A50285BI
+BAUDRATE=9600
+INPUT_DELAY=0.01
+
+CODE_ORG = 0x8000
+
+ASM_SOURCE = asm/example.asm
+C_SRC = c/example.c
